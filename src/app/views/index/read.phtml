@@ -1,0 +1,29 @@
+<h2 class="text-center text-info mb-3">All Users</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">User Name</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+      <?php
+        foreach ($users as $user) {
+            echo '<tr>
+                    <th scope="row">'.$user->_id.'</th>
+                    <td>'.$user->name.'</td>
+                    <td>'.$user->email.'</td>
+                    <td>'.$user->username.'</td>
+                    <td>
+                        <a href="/index/update/'.$user->_id.'" class="btn btn-sm btn-warning">edit</a>
+                        <a href="/index/delete/'.$user->_id.'" class="btn btn-sm btn-danger">delete</a>
+                    </td>
+                </tr>';
+        }
+      ?>
+    
+  </tbody>
+</table>

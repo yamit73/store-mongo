@@ -1,0 +1,43 @@
+<div class="container">
+    <h1 class="text-center text-primary">Add Product</h1>
+    <form class="w-75 m-auto" method="POST" id="form-add-product">
+        <div class="form-floating mt-3">
+            <input type="text" class="form-control" name="name" placeholder="Name">
+            <label for="name">Name</label>
+        </div>
+        <div class="form-floating mt-3">
+            <input type="text" class="form-control" name="category" placeholder="Category Name">
+            <label for="category">Category Name</label>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-floating mt-3">
+                    <input type="text" class="form-control" name="price" placeholder="Price">
+                    <label for="price">Price</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-floating mt-3">
+                    <input type="text" class="form-control" name="stock" placeholder="Name">
+                    <label for="stock">Stock</label>
+                </div>
+            </div>
+        </div>
+        <div class="mt-3 text-center" id="meta-fields">
+            <h4 class="d-inline">Add meta</h4>
+            <button class="btn btn-primary" id="add-meta-fields">+</button>
+            <h4 class="d-inline mx-3">Remove meta</h4>
+            <button class="btn btn-primary" id="remove-meta-fields">-</button>
+
+        </div>
+        <div class="mt-5 text-center" id="variation-fields">
+            <h4 class="d-inline">Add variation</h4>
+            <button class="btn btn-primary " id="add-variation-fields">+</button>
+            <h4 class="d-inline mx-1">Remove variation</h4>
+            <button class="btn btn-primary" id="remove-variation-fields">-</button>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3" id="add-product">Add Product</button>
+    </form>
+</div>
