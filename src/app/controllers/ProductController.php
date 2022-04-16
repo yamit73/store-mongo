@@ -53,6 +53,22 @@ class ProductController extends Controller
             return json_encode($productModel->getAdditonalin($id));
         }
     }
+
+    /**
+     * function to get variation
+     * to select in oreder/add
+     *
+     * @return void
+     */
+    public function getVariationAction()
+    {
+        if ($this->request->isAjax()) {
+            $id=$this->request->getPost('id');
+            $productModel=new Products();
+            $product=$productModel->getAdditonalin($id);
+            return json_encode($product['variation']);
+        }
+    }
     
     /**
      * Delete function

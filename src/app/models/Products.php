@@ -59,6 +59,9 @@ class Products extends Model
      */
     public function getAdditonalin($id)
     {
+        // die(print_r(['_id'=>new MongoDB\BSON\ObjectID($id)]));
+        // echo '<pre>';
+        // print_r($this->collection->findOne(['_id'=>new MongoDB\BSON\ObjectID($id)]));die;
         return $this->collection->findOne(['_id'=>new MongoDB\BSON\ObjectID($id)]);
     }
 

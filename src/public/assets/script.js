@@ -76,18 +76,30 @@ $(document).ready(function(){
      * get variations of the product
      */
     $("#product-info").change(function(){
-        console.log($(this).val())
         var productId=$(this).val();
         $.ajax({
-            url:"http://localhost:8080/product/getAdditionalInfo",
+            url:"http://localhost:8080/product/getVariation",
             type:"POST",
             data:{
                 "id":productId,
             },
             datatype:"JSON",
         }).done(function(data){
-            var data=$.parseJSON(data)
             console.log(data)
+            var data=$.parseJSON(data)
+            var variation='<option val=""></option>';
+            console.log(data)
+            for (const key in data) {
+                var value='';
+                var name='';
+                for (const k in data[key]) {
+                    value+=''+k+':'+data[key][k]+',';
+                    name += '#'+k+':'+data[key][k]+'';
+                }
+                variation += '<option value='+value.substring(0,[value.length-1])+'>'+name+'</option>';
+            }
+            // console.log(variation);
+            $("#product-variation").html(variation);
         });
     });
 });
@@ -141,3 +153,24 @@ function displayModal(data){
     $("#model-meta-info").html(meta);
     $("#model-variation-info").html(variation);
 }
+
+/**
+ * Date picker
+ */
+$("#order-date").change(function(){
+    if($(this).val()=='Custom'){
+        let dateFields='<div class="col">\
+                        <label for="from_date">From</label>\
+                        <input class="form-control" name="from_date" type="date">\
+                    </div>\
+                    <div class="col">\
+                        <label for="to_date">To</label>\
+                        <input class="form-control" name="to_date" type="date">\
+                    </div>';
+        
+        $("#custom-date").html(dateFields);
+    } else {
+        $("#custom-date").html('');
+    }
+    
+});

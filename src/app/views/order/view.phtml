@@ -1,0 +1,80 @@
+<form method="POST">
+    <div class="row mt-3">
+        <div class="col-sm-2">
+            <label for="name">Status</label>
+            <select class="form-select" name="order_status">
+                <option value=""></option>
+                <option value="Paid">paid</option>
+                <option value="Processing">Processing</option>
+                <option value="Dispatched">Dispatched</option>
+                <option value="Shipped">Shipped</option>
+                <option value="Refunded">Refunded</option>
+            </select>
+        </div>
+
+        <div class="col-sm-2">
+            <label for="name">Date range</label>
+            <select class="form-select" name="order_date" id="order-date" aria-label="Default select example">
+                <option value=""></option>
+                <option value="Today">Today</option>
+                <option value="This week"> This week</option>
+                <option value="This Month">This Month</option>
+                <option value="Custom">Custom</option>
+            </select>
+        </div>
+        <div id="custom-date" class="col-auto row">
+           
+        </div>
+        <div class="col-sm-3">
+            <button class="btn btn-primary mt-4" type="submit">Filter</button>
+        </div>
+    </div>
+</form>
+
+<table class="table table-hover shadow mt-4">
+    <thead class="bg-dark text-light">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Product</th>
+            <th scope="col">Variation</th>
+            <th scope="col">Customer</th>
+            <th scope="col">Status</th>
+            <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        foreach ($orders as $order) {
+            echo '<tr>
+                    <th scope="row">' . $order->_id . '</th>
+                    <td>' . $order->product_name . '</td>
+                    <td>' . $order->product_variation . '</td>
+                    <td>' . $order->customer_name . '</td>
+                    <td>' . $order->status . '</td>
+                    <td>' . $order->date . '</td>
+                </tr>';
+        }
+        ?>
+
+    </tbody>
+</table>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6 class="text-primary">Metas</h6>
+                <div id="model-meta-info">
+
+                </div>
+                <h6 class="text-primary">Variations:</h6>
+                <div id="model-variation-info">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

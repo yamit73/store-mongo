@@ -4,28 +4,27 @@
         <div class="row">
             <div class="col">
                 <label for="name">Select Product</label>
-                <select name="product-id" id="product-info" class="form-select" aria-label="Default select example">
+                <select name="product_id" id="product-info" class="form-select" aria-label="Default select example">
                     <option val=""></option>
                     
                     <?php
                         foreach($products as $product) {
-                            echo '<option value="'.$product->_id.'">'.$product->name.'</option>';
+                            echo '<option value='.$product->_id.'>'.$product->name.'</option>';
                         }
                     ?>
                 </select>
             </div>
             <div class="col">
                 <label for="name">Select Variation of the product</label>
-                <select class="form-select" class="product-variation" aria-label="Default select example">
-                    <option val=""></option>
-                    <option value="1">One</option>
+                <select class="form-select" name="product_variation" id="product-variation" aria-label="Default select example">
+                    
                 </select>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <div class="form-floating mt-3">
-                    <input type="text" class="form-control" name="customer-name" placeholder="Name">
+                    <input type="text" class="form-control" name="customer_name" placeholder="Name">
                     <label for="name">Customer Name</label>
                 </div>
             </div>
