@@ -146,7 +146,7 @@ function displayModal(data){
     for (const key in data.variation) {
         var temp='';
         for (const k in data.variation[key]) {
-            temp+='<small>'+k+':'+data.variation[key][k]+'</small>  ';
+            temp+='<small>'+k+':'+data.variation[key][k]+'</small> ';
         }
         variation += '<p>'+temp+'</p>';
     }
@@ -173,4 +173,24 @@ $("#order-date").change(function(){
         $("#custom-date").html('');
     }
     
+});
+
+/**
+ * update order status
+ */
+ $("#order-details").on('change','.order-status',function(){
+    var selected = $(this).find('option:selected');
+    var id = selected.data('orderid');
+    var status=$(this).val();
+    $.ajax({
+        url:"http://localhost:8080/order/update",
+        type:"POST",
+        data:{
+            "id":id,
+            "status":status
+        },
+        datatype:"JSON",
+    }).done(function(data){
+       alert("Updated status");
+    });
 });

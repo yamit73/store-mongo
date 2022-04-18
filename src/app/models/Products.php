@@ -31,6 +31,18 @@ class Products extends Model
     }
 
     /**
+     * Add product to collection
+     *
+     * @param [array] $product
+     * takes product information as array
+     * @return void
+     */
+    public function updateProduct($product,$id)
+    {
+        $this->collection->updateOne(['_id'=>new MongoDB\BSON\ObjectID($id)],['$set'=>$product]);
+    }
+
+    /**
      * To get details of all the products
      *
      * @return void
@@ -59,9 +71,6 @@ class Products extends Model
      */
     public function getAdditonalin($id)
     {
-        // die(print_r(['_id'=>new MongoDB\BSON\ObjectID($id)]));
-        // echo '<pre>';
-        // print_r($this->collection->findOne(['_id'=>new MongoDB\BSON\ObjectID($id)]));die;
         return $this->collection->findOne(['_id'=>new MongoDB\BSON\ObjectID($id)]);
     }
 

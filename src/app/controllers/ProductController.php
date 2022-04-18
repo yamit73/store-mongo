@@ -39,7 +39,23 @@ class ProductController extends Controller
            $productModel->add($product);
        }
     }
-
+    /**
+     * Update product details
+     *
+     * @param [string] $id, ID of product
+     * @return void
+     */
+    public function updateAction($id)
+    {
+        $productModel=new Products();
+        $this->view->product=json_decode(json_encode($productModel->getAdditonalin($id)),true);
+        if ($this->request->isPost()) {
+            $formData=$this->request->getPost();
+            //Call for filter function
+            $product=$this->filterProduct($formData);
+            $productModel->updateProduct($product,$id);
+        }
+    }
     /**
      * function to get addtional info to show in modal
      *

@@ -4,7 +4,7 @@
             <label for="name">Status</label>
             <select class="form-select" name="order_status">
                 <option value=""></option>
-                <option value="Paid">paid</option>
+                <option value="Paid">Paid</option>
                 <option value="Processing">Processing</option>
                 <option value="Dispatched">Dispatched</option>
                 <option value="Shipped">Shipped</option>
@@ -42,7 +42,7 @@
             <th scope="col">Date</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="order-details">
         <?php
         foreach ($orders as $order) {
             echo '<tr>
@@ -50,7 +50,15 @@
                     <td>' . $order->product_name . '</td>
                     <td>' . $order->product_variation . '</td>
                     <td>' . $order->customer_name . '</td>
-                    <td>' . $order->status . '</td>
+                    <td>
+                        <select name="status" class="order-status">
+                            <option value="Paid" data-orderid="'.$order->_id.'" '.($order->status=="Paid" ? "selected":"").'>Paid</option>
+                            <option value="Processing" data-orderid="'.$order->_id.'" '.($order->status=="Processing" ? "selected":"").'>Processing</option>
+                            <option value="Dispatched" data-orderid="'.$order->_id.'" '.($order->status=="Dispatched" ? "selected":"").'>Dispatched</option>
+                            <option value="Shipped" data-orderid="'.$order->_id.'" '.($order->status=="Shipped" ? "selected":"").'>Shipped</option>
+                            <option value="Refunded" data-orderid="'.$order->_id.'" '.($order->status=="Refunded" ? "selected":"").'>Refunded</option>
+                        </select>
+                    </td>
                     <td>' . $order->date . '</td>
                 </tr>';
         }
